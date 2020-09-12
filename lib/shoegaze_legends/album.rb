@@ -1,0 +1,3 @@
+class ShoegazeLegends::Album
+
+end

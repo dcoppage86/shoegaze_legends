@@ -1,0 +1,3 @@
+class ShoegazeLegends::Scraper
+
+end
