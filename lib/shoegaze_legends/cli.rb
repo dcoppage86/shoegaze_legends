@@ -1,12 +1,39 @@
 class ShoegazeLegends::CLI
     def call
         # starts program and welcomes user
-        # puts "*******************************************************"
-        puts "* Welcome User...to Shoegaze Legends...Are you ready? *"
-        # puts "*******************************************************"
-        get_album_list
-        get_user_input
+        puts ""
+        puts "****************************************************************************"
+        puts "* Welcome to Shoegaze Legends, The Top 10 Best Shoegaze albums of all time *"
+        puts "****************************************************************************"
+        puts ""
+        # get_album_list
+        # get_user_input
         #give_info_on_album
+        start
+    end
+
+    def start
+        puts "**********************************************************************************************"
+        puts "Now lets stop shoegazing and get to the point of our journey here. Are you ready? Enter Y or N"
+        puts "**********************************************************************************************"
+        input = gets.strip
+
+        puts "**********************************************************************************************"
+        puts "Select an number between 1-10."
+        puts "**********************************************************************************************"
+        input = gets.strip
+
+        if input == "y"
+            start
+        elsif input == "n"
+            puts ""
+            puts "See you later...back to reality!"
+            exit
+        else
+            puts ""
+            puts "Where are you trying to go with this?"
+            start
+        end
     end
 
     def get_album_list
