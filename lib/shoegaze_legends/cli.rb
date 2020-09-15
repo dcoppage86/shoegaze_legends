@@ -4,12 +4,13 @@ class ShoegazeLegends::CLI
         puts ""
         puts "****************************************************************************"
         puts "* Welcome to Shoegaze Legends, The Top 10 Best Shoegaze albums of all time *"
+        puts "*                Ready For Lift-Off? Select y or n                         *"
         puts "****************************************************************************"
         puts ""
         get_albums
         list_albums
-        get_user_album
         get_user_input
+        get_album_info
         # start
     end
 
@@ -24,7 +25,7 @@ class ShoegazeLegends::CLI
         puts " "
         puts " "
         @albums.each.with_index(1) do |album, index| 
-            puts "#{index}. #{album.name}"
+            puts "#{index}. #{artist.name} - #{album.name}"
             puts "---------------------------------------"
         end
     end
@@ -53,16 +54,45 @@ class ShoegazeLegends::CLI
             puts "----------------------------------------------------------"
             puts "               #{album}"
             puts "----------------------------------------------------------"
-            puts " "
-            puts "**********************************************************"
-            puts "* Would you like more info on this album? select y or n! * "
-            puts "**********************************************************"
-            puts " "
         end
     end
 
-    def get_user_album
-        
+    def get_album_info
+        puts " "
+        puts "**********************************************************"
+        puts "* Would you like more info on this album? select y or n! *"
+        puts "**********************************************************"
+        puts " "
+
+        input = gets.strip
+        while input != "exit"
+            if input == "y"
+                puts "album info"
+                list_albums
+                get_user_input
+                get_album_info
+            elsif input == "n"
+                puts " "
+                puts "***********************************************************"
+                puts "*   Then chose another album or type exit SPACE-CASE!!!   *"
+                puts "***********************************************************"
+                puts " "
+                list_albums
+                get_user_input
+                get_album_info
+            else
+                puts "***********************************************************"
+                puts "*      What are you trying to achieve here Einstein??     *"
+                puts "***********************************************************"
+                list_albums
+                get_user_input
+                get_album_info
+            end
+        end
+    end
+
+    def goodbye
+        "See ya next time, Space-Case!"
     end
             
 

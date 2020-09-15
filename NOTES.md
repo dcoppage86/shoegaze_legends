@@ -15,3 +15,8 @@ Classes
 -CLI
 -Scraper
 
+what is an album?
+
+an album has a name
+an album has an artist
+an album has info

@@ -12,6 +12,7 @@ class ShoegazeLegends::Album
     end
 
     def self.all
+        ShoegazeLegends::Scraper.scrape_albums if @@all.empty?
         @@all
     end
 

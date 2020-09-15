@@ -8,6 +8,8 @@ Bundler.require
 require 'pry'
 require 'open-uri'
 
+doc = Nokogiri::HTML(open("https://blog.discogs.com/en/10-of-the-best-shoegaze-records"))
+
 
 module ShoegazeLegends
   class Error < StandardError; end
