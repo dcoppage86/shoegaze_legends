@@ -8,23 +8,24 @@ class ShoegazeLegends::CLI
         puts ""
         get_albums
         list_albums
-        # get_user_album
+        get_user_album
         get_user_input
         # start
     end
 
     def get_albums
-        #scrape
-        @albums = ["My Bloody Valentine - Loveless", "Ride - Nowhere", "Slowdive - Souvlaki", "Jesus and Mary Chain - Psychocandy", "Cocteau Twins - Heaven Or Las Vegas", "Verve - A Storm In Heaven", "Swervedriver - Mezcal Head", "Catherine Wheel - Chrome", "Lush - Spooky", "Chapterhouse - Whirlpool"]
-        # binding.pry
+        @albums = ShoegazeLegends::Album.all
     end
 
     def list_albums
         puts "**********************************"
         puts "* Select a number between 1-10. *"
         puts "**********************************"
+        puts " "
+        puts " "
         @albums.each.with_index(1) do |album, index| 
-            puts "#{index}. #{album}"
+            puts "#{index}. #{album.name}"
+            puts "---------------------------------------"
         end
     end
 
@@ -34,18 +35,34 @@ class ShoegazeLegends::CLI
     # end
     # refactored into the get_user_input method
 
-    def valid?(input, data)
-        input.to_i <= data.length && input.to_i > 0
-    end
+    # def valid?(input, data)
+    #     input.to_i <= data.length && input.to_i > 0
+    # end
+    # unneeded now...
 
     def get_user_input
         user_selection = gets.strip.to_i
         if user_selection.between?(1, 10)
             album = @albums[user_selection - 1]
-            album.get_albums
-            puts "#{album}"
+            album
+            puts " "
+            puts "**********************************************************"
+            puts "*               Great Choice, Space-Case!                *"
+            puts "**********************************************************"
+            puts " "
+            puts "----------------------------------------------------------"
+            puts "               #{album}"
+            puts "----------------------------------------------------------"
+            puts " "
+            puts "**********************************************************"
+            puts "* Would you like more info on this album? select y or n! * "
+            puts "**********************************************************"
+            puts " "
         end
-        get_albums
+    end
+
+    def get_user_album
+        
     end
             
 

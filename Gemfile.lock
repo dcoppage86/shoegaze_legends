@@ -2,7 +2,6 @@ PATH
   remote: .
   specs:
     shoegaze_legends (0.1.0)
-      nokogiri
 
 GEM
   remote: https://rubygems.org/
@@ -35,6 +34,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  nokogiri
   pry
   rake (~> 12.0)
   rspec (~> 3.0)

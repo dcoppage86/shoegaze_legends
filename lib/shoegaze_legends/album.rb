@@ -8,13 +8,14 @@ class ShoegazeLegends::Album
         @artist = artist
         @url = url
         @album_info = album_info
+        save
     end
 
     def self.all
         @@all
     end
 
-    def self.save
+    def save
         @@all << self
     end
 
