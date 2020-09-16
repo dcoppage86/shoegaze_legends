@@ -1,14 +1,15 @@
 class ShoegazeLegends::Scraper
     
 
-    def self.scrape_albums
+    def self.scrape_artists
         doc = Nokogiri::HTML(open("https://blog.discogs.com/en/10-of-the-best-shoegaze-records"))
         
-        artists = doc.css("div.post-entry-content ol li")[0].css("h4 a").text
-       
-        end
-
+        artists = doc.css("div.post-entry-content ol li")
         
+        artists.each do |artist|
+            name = artist.css("h4 a").text
+            ShoegazeLegends::Artist.new(name)
+        end
     end
 
 
