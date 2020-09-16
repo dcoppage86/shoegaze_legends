@@ -26,7 +26,7 @@ class ShoegazeLegends::CLI
         puts "**********************************"
         puts " "
         puts " "
-        @albums.each.with_index(1) do |album, index| 
+        @albums.each.with_index(1) do |album, index, artist| 
             puts "#{index}. #{artist.name} - #{album.name}"
             puts "---------------------------------------"
         end
