@@ -12,8 +12,15 @@ class ShoegazeLegends::Scraper
         end
     end
 
+    def self.scrape_album
+        doc = Nokogiri::HTML(open("https://blog.discogs.com/en/10-of-the-best-shoegaze-records"))
 
-    def scrape_album_info
+
+        # binding.pry
+    end
+
+    def scrape_info
+
 
     end
 
