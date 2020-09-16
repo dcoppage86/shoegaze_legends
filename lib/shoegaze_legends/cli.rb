@@ -1,3 +1,4 @@
+require 'pry'
 class ShoegazeLegends::CLI
     def call
         # starts program and welcomes user
@@ -11,6 +12,7 @@ class ShoegazeLegends::CLI
         list_albums
         get_user_input
         get_album_info
+        binding.pry
         # start
     end
 
