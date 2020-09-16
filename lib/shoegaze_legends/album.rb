@@ -3,11 +3,8 @@ class ShoegazeLegends::Album
 
     @@all = []
 
-    def initialize(name, artist)
+    def initialize(name)
         @name = name
-        @artist = artist
-        @url = url
-        @album_info = album_info
         save
     end
 

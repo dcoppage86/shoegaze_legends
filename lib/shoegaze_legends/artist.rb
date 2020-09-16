@@ -11,20 +11,21 @@ class ShoegazeLegends::Artist
     def self.all
         ShoegazeLegends::Scraper.scrape_artists if @@all.empty?
         @@all
+        binding.pry
     end
 
     def save
         @@all << self
     end
 
-    def self.create(artist)
-        artist = self.new(artist)
-        artist.save
-        artist
-    end
+    # def self.create(artist)
+    #     artist = self.new(artist)
+    #     artist.save
+    #     artist
+    # end
 
-    def add_album(album)
-        album.artist = self if album.artist ==nil
-        self.albums << album if self.albums.include?(album) == false
-    end
+    # def add_album(album)
+    #     album.artist = self if album.artist ==nil
+    #     self.albums << album if self.albums.include?(album) == false
+    # end
 end

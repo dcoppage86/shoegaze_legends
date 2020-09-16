@@ -20,6 +20,10 @@ class ShoegazeLegends::CLI
         @albums = ShoegazeLegends::Album.all
     end
 
+    def get_artists
+        @artists = ShoegazeLegends::Album.all
+    end
+
     def list_albums
         puts "**********************************"
         puts "* Select a number between 1-10. *"
@@ -52,15 +56,13 @@ class ShoegazeLegends::CLI
             puts "**********************************************************"
             puts "*               Great Choice, Space-Case!                *"
             puts "**********************************************************"
-            # puts "               #{album.artist.name} - #{album.name}"
+            puts "               #{album.artist.name} - #{album.name}"
             puts "----------------------------------------------------------"
-            list_albums
         elsif user_selection != user_selection.between?(1, 10)
             puts "***********************************************************"
             puts "*      What are you trying to achieve here Einstein??     *"
             puts "***********************************************************"
             list_albums
-            call
         else
             "see-ya space-case"
             exit

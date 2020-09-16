@@ -1,6 +1,7 @@
 require_relative './shoegaze_legends/version'
 require_relative './shoegaze_legends/cli'
 require_relative './shoegaze_legends/album'
+require_relative './shoegaze_legends/artist'
 require_relative './shoegaze_legends/scraper'
 
 require 'bundler'
