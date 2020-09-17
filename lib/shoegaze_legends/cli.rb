@@ -1,9 +1,10 @@
 require 'pry'
 class ShoegazeLegends::CLI
-    attr_accessor :albums, :artist
+    attr_accessor :albums, :artist, :info
 
     def call
         # starts program and welcomes user
+        open_image
         welcomes
         get_albums
         # list_albums
@@ -14,13 +15,22 @@ class ShoegazeLegends::CLI
     end
 
     def open_image
-        puts "===SSS================================================================"
-        puts "========00========================================================"
-        puts "==S   S====0  0========================================================="
-        puts "=== S=====0  0======================================================="
-        puts "==== S===0  0========================================================="
-        puts "==S   S====00=========================================================="
-        puts "===SSS==============================================================="
+        puts "
+        ███████╗██╗  ██╗ ██████╗ ███████╗ ██████╗  █████╗ ███████╗███████╗                 
+        ██╔════╝██║  ██║██╔═══██╗██╔════╝██╔════╝ ██╔══██╗╚══███╔╝██╔════╝                 
+        ███████╗███████║██║   ██║█████╗  ██║  ███╗███████║  ███╔╝ █████╗                   
+        ╚════██║██╔══██║██║   ██║██╔══╝  ██║   ██║██╔══██║ ███╔╝  ██╔══╝                   
+        ███████║██║  ██║╚██████╔╝███████╗╚██████╔╝██║  ██║███████╗███████╗                 
+        ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝╚══════╝                 
+                                ██╗     ███████╗ ██████╗ ███████╗███╗   ██╗██████╗ ███████╗
+                                ██║     ██╔════╝██╔════╝ ██╔════╝████╗  ██║██╔══██╗██╔════╝
+                                ██║     █████╗  ██║  ███╗█████╗  ██╔██╗ ██║██║  ██║███████╗
+                                ██║     ██╔══╝  ██║   ██║██╔══╝  ██║╚██╗██║██║  ██║╚════██║
+                                ███████╗███████╗╚██████╔╝███████╗██║ ╚████║██████╔╝███████║
+                                ╚══════╝╚══════╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝╚═════╝ ╚══════╝
+                                                                                           ".cyan
+                                                                                                       
+                                                                                                       
     end
 
 
@@ -54,16 +64,25 @@ class ShoegazeLegends::CLI
     # end
 
     def list_albums
-        puts "**********************************"
-        puts "* Select a number between 1-10.  *"
-        puts "**********************************"
+        puts "**********************************".black.on_light_magenta
+        puts "* Select a number between 1-10.  *".black.on_light_magenta
+        puts "**********************************".black.on_light_magenta
         puts " "
         puts " "
         ShoegazeLegends::Album.all.each.with_index(1) do |album, index, artist| 
-            puts "#{index}. #{album.artist} - #{album.name}"
+            puts "#{index}. #{album.artist} - #{album.name}".cyan
             puts "---------------------------------------"
         end
     end
+
+    def list_info
+        ShoegazeLegends::Album.all.each.with_index(1) do |album, info|
+            puts "--------------------------------------------------"
+            puts "#{album.info}"
+            puts "--------------------------------------------------"
+        end
+    end
+    
 
     # def get_user_album
     #     user_selection = gets.strip.to_i
@@ -82,17 +101,18 @@ class ShoegazeLegends::CLI
             album = ShoegazeLegends::Album.all[user_selection - 1]
             album
             puts " "
-            puts "**********************************************************"
-            puts "*               Great Choice, Space-Case!                *"
-            puts "**********************************************************"
-            puts "**********************************************************"
-            puts "               #{album.artist} - #{album.name}"
-            puts "**********************************************************"
+            puts "**********************************************************".black.on_light_magenta
+            puts "*                                                        *".black.on_light_magenta
+            puts "*               Great Choice, Space-Case!                *".black.on_light_magenta
+            puts "*                                                        *".black.on_light_magenta
+            puts "**********************************************************".black.on_light_magenta
+            puts ""
+            puts "                 #{album.artist} - #{album.name}            ".red.on_black
         # else user_selection != user_selection.between?(1, 10)
         else
-            puts "***********************************************************"
-            puts "*      What are you trying to achieve here Einstein??     *"
-            puts "***********************************************************"
+            puts "***********************************************************".black.on_light_magenta
+            puts "*      What are you trying to achieve here Einstein??     *".black.on_light_magenta
+            puts "***********************************************************".black.on_light_magenta
             list_albums
         # else
         #     puts "see-ya space-case"
@@ -102,21 +122,23 @@ class ShoegazeLegends::CLI
 
     def get_album_info
         more_info
+        get_albums
         input = gets.strip
+
         if input == "y"
-            puts " "
-            puts "**********************************************************"
-            puts "*               album info to be scraped                 *"
-            puts "**********************************************************"
-            puts " "
-            puts "                   "
-            get_user_input
-            get_album_info
+            puts ""
+            puts ""
+            list_info
+            puts ""
+            puts ""
+            puts ""
+            # get_user_input
+            # get_album_info
         elsif input == "n"
             puts " "
-            puts "**********************************************************"
-            puts "*    Then choose list album or exit, Space-case!     *"
-            puts "**********************************************************"
+            puts "**********************************************************".black.on_light_magenta
+            puts "*       Then choose list album or exit, Space-case!      *".black.on_light_magenta
+            puts "**********************************************************".black.on_light_magenta
             puts " "
             # list_albums
             # get_user_input
@@ -126,23 +148,21 @@ class ShoegazeLegends::CLI
             goodbye
         end
     end
-
-    def album_choice
-        
-    end
-
+    
     def more_info
         puts " "
-        puts "**********************************************************"
-        puts "* Would you like more info on this album? select y or n! *"
-        puts "**********************************************************"
+        puts "**********************************************************".black.on_light_magenta
+        puts "* Would you like more info on this album? select y or n! *".black.on_light_magenta
+        puts "**********************************************************".black.on_light_magenta
         puts " "
     end
     
     def goodbye
-        puts "****************************************************************************"
-        puts "*                        See-ya Later, Space-Case!!                        *"
-        puts "****************************************************************************"
+        puts " "
+        puts "****************************************************************************".black.on_light_magenta
+        puts "*                        See-ya Later, Space-Case!!                        *".black.on_light_magenta
+        puts "****************************************************************************".black.on_light_magenta
+        puts " "
         exit
     end
             

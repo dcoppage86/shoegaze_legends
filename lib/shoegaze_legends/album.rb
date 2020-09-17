@@ -1,11 +1,12 @@
 class ShoegazeLegends::Album
-    attr_accessor :name, :artist, :url, :album_info
+    attr_accessor :name, :artist, :url, :info
 
     @@all = []
 
-    def initialize(name, artist)
+    def initialize(name, artist, info)
         @name = name
         @artist = artist
+        @info = info
         save
     end
 
