@@ -77,6 +77,7 @@ class ShoegazeLegends::CLI
 
     def list_info
         ShoegazeLegends::Album.all.each.with_index(1) do |album, info|
+            binding.pry
             puts "--------------------------------------------------"
             puts "#{album.info}"
             puts "--------------------------------------------------"
