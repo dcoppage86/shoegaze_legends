@@ -3,12 +3,14 @@ class ShoegazeLegends::Album
 
     @@all = []
 
-    def initialize(name)
+    def initialize(name, artist)
         @name = name
+        @artist = artist
         save
     end
 
     def self.all
+        ShoegazeLegends::Scraper.scrape_albums if @@all.empty?
         @@all
     end
 
