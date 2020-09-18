@@ -53,11 +53,18 @@ class ShoegazeLegends::CLI
     end
 
     def list_info
+        # album = ShoegazeLegends::Album.all
         ShoegazeLegends::Album.all.each do |album, info|
             puts "--------------------------------------------------"
             puts "#{album.info}"
             puts "--------------------------------------------------"
         end
+        # ShoegazeLegends::Album.all.each do |album, info|
+        #     puts "--------------------------------------------------"
+        #     puts "#{album.info}"
+        #     puts "--------------------------------------------------"
+            
+        # end
         next_choice
     end
     
