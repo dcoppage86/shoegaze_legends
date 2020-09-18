@@ -8,7 +8,7 @@ class ShoegazeLegends::CLI
         welcomes
         get_albums
         # list_albums
-        get_user_input
+        # get_user_input
         # get_album_info
         # binding.pry
         # start
@@ -54,6 +54,7 @@ class ShoegazeLegends::CLI
             puts "#{index}. #{album.artist} - #{album.name}".cyan
             puts "---------------------------------------"
         end
+        get_user_input
     end
 
     def list_info
@@ -62,6 +63,7 @@ class ShoegazeLegends::CLI
             puts "#{album.info}"
             puts "--------------------------------------------------"
         end
+        next_choice
     end
     
 
@@ -110,10 +112,6 @@ class ShoegazeLegends::CLI
             # get_user_input
             # get_album_info
         elsif input == "n"
-          choose_an_album
-            # list_albums
-            # get_user_input
-        elsif input == "list"
             list_albums
         else
             goodbye
@@ -129,12 +127,12 @@ class ShoegazeLegends::CLI
         puts ""
         input = gets.strip
         if input == "y"
-                list_albums
+            list_albums
         elsif input == "n"
-                nevermind
+            nevermind
         else
-                wrong_choice
-                goodbye
+            wrong_choice
+            goodbye
         end
     end
         
@@ -162,6 +160,17 @@ class ShoegazeLegends::CLI
         puts "*            Grazing and Gazing Space-Case: Try Again? y or n              *".black.on_light_magenta.blink
         puts "****************************************************************************".black.on_light_magenta.blink
         puts ""
+        input = gets.strip
+        if input == "y"
+            puts ""
+            puts ""
+            list_albums
+        elsif input == "n"
+            goodbye
+        else
+            wrong_choice
+        end
+    end
     
     def great_choice
         puts " "
