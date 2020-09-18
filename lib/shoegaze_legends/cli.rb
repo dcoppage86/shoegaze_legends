@@ -52,13 +52,13 @@ class ShoegazeLegends::CLI
         get_user_input
     end
 
-    def list_info
+    def list_info(album)
         # album = ShoegazeLegends::Album.all
-        ShoegazeLegends::Album.all.each do |album, info|
-            puts "--------------------------------------------------"
-            puts "#{album.info}"
-            puts "--------------------------------------------------"
-        end
+ 
+        puts "--------------------------------------------------"
+        puts "#{album.album_info}"
+        puts "--------------------------------------------------"
+        
         # ShoegazeLegends::Album.all.each do |album, info|
         #     puts "--------------------------------------------------"
         #     puts "#{album.info}"
@@ -87,7 +87,7 @@ class ShoegazeLegends::CLI
             album
             great_choice
             puts "                        #{album.artist} - #{album.name}            ".red.on_black
-            get_album_info
+            get_album_info(album)
         elsif user_selection != user_selection.between?(1, 10)
             wrong_choice
             list_albums
@@ -99,7 +99,7 @@ class ShoegazeLegends::CLI
         end
     end
 
-    def get_album_info
+    def get_album_info(album)
         more_info
         get_albums
         input = gets.strip
@@ -107,7 +107,7 @@ class ShoegazeLegends::CLI
         if input == "y"
             puts ""
             puts ""
-            list_info
+            list_info(album)
             puts ""
             puts ""
             puts ""

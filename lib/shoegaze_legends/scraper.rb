@@ -20,24 +20,35 @@ class ShoegazeLegends::Scraper
 
         albums = doc.css("div.post-entry-content ol li")
 
-        hash = {}
+        # hash = {}
+
+        # albums.each do |album|
+        #     hash[:name] = album.css("h3 a").text
+        #     hash[:artist] = album.css("h4 a").text
+        #     hash[:info] = album.css("div.album-description").text.gsub("\n", " ")
+        #     ShoegazeLegends::Album.new(hash[:name], hash[:artist], hash[:info])
 
         albums.each do |album|
-            hash[:name] = album.css("h3 a").text
-            hash[:artist] = album.css("h4 a").text
-            hash[:info] = album.css("div.album-description").text.gsub("\n", " ")
-            ShoegazeLegends::Album.new(hash[:name], hash[:artist], hash[:info])
+            name = album.css("h3 a").text
+            artist = album.css("h4 a").text
+            info = album.css("div.album-description").text.gsub("\n", " ")
+            ShoegazeLegends::Album.new(name, artist,info)
+
+
             
             
         end
     end
 
     # def self.scrape_info
-    #     doc = 
+    #     doc = Nokogiri::HTML(open("https://blog.discogs.com/en/10-of-the-best-shoegaze-records"))
 
-    #     album_info = 
+    #     album_info = doc.css("div.post-entry-content ol li")
 
-
+    #     album_info.each do |info|
+    #         album_info = info.css("div.album-description").text.gsub("\n", " ")
+    #         ShoegazeLegends::Album.new(info)
+    #     end
     # end
 
 end
