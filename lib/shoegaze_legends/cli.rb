@@ -107,7 +107,7 @@ class ShoegazeLegends::CLI
             # get_user_input
             # get_album_info
         elsif input == "n"
-            list_albums
+            next_choice
         else
             goodbye
         end
@@ -170,7 +170,7 @@ class ShoegazeLegends::CLI
             puts ""
             list_albums
         elsif input == "n"
-            are_you_sure?
+            goodbye
         else
             wrong_choice
         end
