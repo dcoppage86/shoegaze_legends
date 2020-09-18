@@ -9,7 +9,7 @@ class ShoegazeLegends::CLI
         get_albums
         # list_albums
         get_user_input
-        get_album_info
+        # get_album_info
         # binding.pry
         # start
     end
@@ -34,25 +34,6 @@ class ShoegazeLegends::CLI
                                                                                                        
     end
 
-
-
-    def welcomes
-        puts ""
-        puts "****************************************************************************".black.on_light_magenta.blink
-        puts "* Welcome to Shoegaze Legends, The Top 10 Best Shoegaze albums of all time *".black.on_light_magenta.blink
-        puts "*                Ready For Lift-Off? Select y or n                         *".black.on_light_magenta.blink
-        puts "****************************************************************************".black.on_light_magenta.blink
-        puts ""
-        input = gets.strip
-        if input == "y"
-            list_albums
-        elsif input == "n"
-            nevermind
-            goodbye
-        end
-    end
-
-
     def get_albums
         ShoegazeLegends::Scraper.new
         # @albums = ShoegazeLegends::Album.all
@@ -63,6 +44,7 @@ class ShoegazeLegends::CLI
     # end
 
     def list_albums
+        puts ""
         puts "****************************************************************************".black.on_light_magenta
         puts "*                       Select a number between 1-10.                      *".black.on_light_magenta
         puts "****************************************************************************".black.on_light_magenta
@@ -101,10 +83,12 @@ class ShoegazeLegends::CLI
             album
             great_choice
             puts "                        #{album.artist} - #{album.name}            ".red.on_black
-        # else user_selection != user_selection.between?(1, 10)
-        else
+            get_album_info
+        elsif user_selection != user_selection.between?(1, 10)
             wrong_choice
             list_albums
+        else
+            booted
         # else
         #     puts "see-ya space-case"
             
@@ -136,11 +120,48 @@ class ShoegazeLegends::CLI
         end
     end
 
+    def welcomes
+        puts ""
+        puts "****************************************************************************".black.on_light_magenta.blink
+        puts "* Welcome to Shoegaze Legends, The Top 10 Best Shoegaze albums of all time *".black.on_light_magenta.blink
+        puts "*                Ready For Lift-Off? Select y or n                         *".black.on_light_magenta.blink
+        puts "****************************************************************************".black.on_light_magenta.blink
+        puts ""
+        input = gets.strip
+        if input == "y"
+                list_albums
+        elsif input == "n"
+                nevermind
+        else
+                wrong_choice
+                goodbye
+        end
+    end
+        
+        
+
     def nevermind
         puts "****************************************************************************".black.on_light_magenta.blink
-        puts "*                   Then why are you wasting my time??                     *".black.on_light_magenta.blink
+        puts "*          Then why are you wasting my time?? Try Again? y or n            *".black.on_light_magenta.blink
         puts "****************************************************************************".black.on_light_magenta.blink
+        input = gets.strip
+        if input == "y"
+            puts ""
+            puts ""
+            call
+        elsif input == "n"
+            booted
+        else
+            wrong_choice
+        end
     end
+
+    def next_choice
+        puts ""
+        puts "****************************************************************************".black.on_light_magenta.blink
+        puts "*            Grazing and Gazing Space-Case: Try Again? y or n              *".black.on_light_magenta.blink
+        puts "****************************************************************************".black.on_light_magenta.blink
+        puts ""
     
     def great_choice
         puts " "
@@ -156,6 +177,13 @@ class ShoegazeLegends::CLI
         puts "****************************************************************************".black.on_light_magenta
         puts "*              What are you trying to achieve here Einstein??              *".black.on_light_magenta
         puts "****************************************************************************".black.on_light_magenta
+    end
+
+    def booted
+        puts "****************************************************************************".black.on_light_magenta
+        puts "*                   Really?!?, get out of here...GENIUS!!!                 *".black.on_light_magenta
+        puts "****************************************************************************".black.on_light_magenta
+        exit
     end
     
     def more_info
