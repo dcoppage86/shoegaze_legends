@@ -44,12 +44,7 @@ class ShoegazeLegends::CLI
     # end
 
     def list_albums
-        puts ""
-        puts "****************************************************************************".black.on_light_magenta
-        puts "*                       Select a number between 1-10.                      *".black.on_light_magenta
-        puts "****************************************************************************".black.on_light_magenta
-        puts " "
-        puts " "
+        album_selector_message
         ShoegazeLegends::Album.all.each.with_index(1) do |album, index, artist| 
             puts "#{index}. #{album.artist} - #{album.name}".cyan
             puts "---------------------------------------"
@@ -135,6 +130,15 @@ class ShoegazeLegends::CLI
             goodbye
         end
     end
+
+    def album_selector_message
+        puts ""
+        puts "****************************************************************************".black.on_light_magenta
+        puts "*                       Select a number between 1-10.                      *".black.on_light_magenta
+        puts "****************************************************************************".black.on_light_magenta
+        puts " "
+        puts " "
+    end
         
         
 
@@ -146,7 +150,7 @@ class ShoegazeLegends::CLI
         if input == "y"
             puts ""
             puts ""
-            call
+            welcomes
         elsif input == "n"
             booted
         else
@@ -166,7 +170,7 @@ class ShoegazeLegends::CLI
             puts ""
             list_albums
         elsif input == "n"
-            goodbye
+            are_you_sure?
         else
             wrong_choice
         end
@@ -210,13 +214,45 @@ class ShoegazeLegends::CLI
         puts "****************************************************************************".black.on_light_magenta
         puts " "
     end
+
+    def are_you_sure?
+        puts " "
+        puts "****************************************************************************".black.on_light_magenta
+        puts "*                     Are you over it already? y or n                      *".black.on_light_magenta
+        puts "****************************************************************************".black.on_light_magenta
+        puts " "
+        input = gets.strip
+        if input == "y"
+            goodbye
+        else
+            list_albums
+        end
+    end
     
     def goodbye
-        puts " "
-        puts "****************************************************************************".black.on_light_magenta
-        puts "*                        See-ya Later, Space-Case!!                        *".black.on_light_magenta
-        puts "****************************************************************************".black.on_light_magenta
-        puts " "
+        puts "
+              ██╗      █████╗ ████████╗███████╗██████╗     
+              ██║     ██╔══██╗╚══██╔══╝██╔════╝██╔══██╗    
+              ██║     ███████║   ██║   █████╗  ██████╔╝    
+              ██║     ██╔══██║   ██║   ██╔══╝  ██╔══██╗    
+              ███████╗██║  ██║   ██║   ███████╗██║  ██║    
+              ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝    
+                                                           
+              ███████╗██████╗  █████╗  ██████╗███████╗     
+              ██╔════╝██╔══██╗██╔══██╗██╔════╝██╔════╝     
+              ███████╗██████╔╝███████║██║     █████╗       
+              ╚════██║██╔═══╝ ██╔══██║██║     ██╔══╝       
+              ███████║██║     ██║  ██║╚██████╗███████╗     
+              ╚══════╝╚═╝     ╚═╝  ╚═╝ ╚═════╝╚══════╝     
+                                                           
+               ██████╗ █████╗ ███████╗███████╗             
+              ██╔════╝██╔══██╗██╔════╝██╔════╝             
+              ██║     ███████║███████╗█████╗               
+              ██║     ██╔══██║╚════██║██╔══╝               
+              ╚██████╗██║  ██║███████║███████╗             
+               ╚═════╝╚═╝  ╚═╝╚══════╝╚══════╝             
+                                                     ".cyan     
+                                             
         exit
     end
             
