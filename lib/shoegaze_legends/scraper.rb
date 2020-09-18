@@ -25,7 +25,7 @@ class ShoegazeLegends::Scraper
         albums.each do |album|
             hash[:name] = album.css("h3 a").text
             hash[:artist] = album.css("h4 a").text
-            hash[:info] = album.css("div.album-description").text.gsub("\n", "")
+            hash[:info] = album.css("div.album-description").text.gsub("\n", " ")
             ShoegazeLegends::Album.new(hash[:name], hash[:artist], hash[:info])
             
         end
