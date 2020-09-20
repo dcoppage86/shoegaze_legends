@@ -8,6 +8,7 @@ class ShoegazeLegends::Album
         @artist = artist
         # @info = info
         @album_info = album_info
+        @url = url
         save
     end
 
@@ -23,9 +24,5 @@ class ShoegazeLegends::Album
     # def add_album_info
     #     ShoegazeLegends::Scraper.scrape_info if @album_info.empty?
     # end
-
- 
-
-
-
+    
 end
