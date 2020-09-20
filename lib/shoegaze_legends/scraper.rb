@@ -32,11 +32,7 @@ class ShoegazeLegends::Scraper
             name = album.css("h3 a").text
             artist = album.css("h4 a").text
             info = album.css("div.album-description").text.gsub("\n", " ")
-            ShoegazeLegends::Album.new(name, artist,info)
-
-
-            
-            
+            ShoegazeLegends::Album.new(name, artist,info)   
         end
     end
 

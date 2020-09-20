@@ -1,8 +1,6 @@
 # ShoegazeLegends
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/shoegaze_legends`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This gem lets you dive into the wild, atmospheric world of shoegaze. This is a list of the TOP 10 shoegaze albums of all time. It will give you an insight into the artist and their groundbreaking piece of music history. It also lets you link out to a playlist created to experience the songs themselves.
 
 ## Installation
 
