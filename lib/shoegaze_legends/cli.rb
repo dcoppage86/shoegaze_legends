@@ -188,7 +188,7 @@ class ShoegazeLegends::CLI
         input = gets.strip
         if input == "y"
             system("open", "https://open.spotify.com/playlist/6watizY5nc7EEwZLr5uGR9?si=Ot0I_Tc7Q0e0za2KEBz2Hw")
-            next_choice
+            start_over
         else input == "n"
             goodbye
         end
@@ -196,8 +196,17 @@ class ShoegazeLegends::CLI
     
     def start_over
         puts "****************************************************************************".black.on_light_magenta
-        puts "*           Start from the TOP or Call it a DAY? Type TOP or DAY           *".black.on_light_magenta
+        puts "*                        Start from the TOP?? y or n                       *".black.on_light_magenta
         puts "****************************************************************************".black.on_light_magenta
+        input = gets.strip
+        if input == "y"
+            list_albums
+        elsif input == "n"
+            goodbye
+        else
+            wrong_choice
+        end
+    end
 
     def great_choice
         puts " "
@@ -217,7 +226,7 @@ class ShoegazeLegends::CLI
 
     def listen
         puts "****************************************************************************".black.on_light_magenta
-        puts "*            Would you like to listen to a collection of hits??            *".black.on_light_magenta
+        puts "*        Would you like to listen to a collection of hits?? y or n         *".black.on_light_magenta
         puts "****************************************************************************".black.on_light_magenta
     end
 
