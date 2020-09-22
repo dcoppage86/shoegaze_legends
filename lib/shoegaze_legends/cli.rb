@@ -45,7 +45,7 @@ class ShoegazeLegends::CLI
 
     def list_albums
         album_selector_message
-        ShoegazeLegends::Album.all.each.with_index(1) do |album, index, artist| 
+        ShoegazeLegends::Album.all.each.with_index(1) do |album, index| 
             puts "#{index}. #{album.artist} - #{album.name}".cyan
             puts "---------------------------------------"
         end
@@ -82,17 +82,16 @@ class ShoegazeLegends::CLI
 
     def get_user_input
         user_selection = gets.strip.to_i
-        if user_selection.between?(1, 10)
+        num_of_a = ShoegazeLegends::Album.all.count
+        if user_selection.between?(1, num_of_a)
             album = ShoegazeLegends::Album.all[user_selection - 1]
             album
             great_choice
             puts "                        #{album.artist} - #{album.name}            ".red.on_black
             get_album_info(album)
-        elsif user_selection != user_selection.between?(1, 10)
+        else
             wrong_choice
             list_albums
-        else
-            booted
         # else
         #     puts "see-ya space-case"
             
@@ -134,7 +133,7 @@ class ShoegazeLegends::CLI
             nevermind
         else
             wrong_choice
-            goodbye
+            welcomes
         end
     end
 
@@ -162,6 +161,7 @@ class ShoegazeLegends::CLI
             booted
         else
             wrong_choice
+            nevermind
         end
     end
 
@@ -205,6 +205,7 @@ class ShoegazeLegends::CLI
             goodbye
         else
             wrong_choice
+            list_albums
         end
     end
 
