@@ -3,16 +3,14 @@ require_relative './shoegaze_legends/cli'
 require_relative './shoegaze_legends/scraper'
 require_relative './shoegaze_legends/album'
 
-
 require 'bundler'
 Bundler.require
-require 'pry'
+require 'nokogiri'
 require 'open-uri'
-
-doc = Nokogiri::HTML(open("https://blog.discogs.com/en/10-of-the-best-shoegaze-records"))
-
 
 module ShoegazeLegends
   class Error < StandardError; end
-  # Your code goes here...
+
+  interface = ShoegazeLegends::CLI.new
+  interface.call
 end
